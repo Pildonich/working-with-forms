@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8">
   <title>IMPROVE - Тестовое задание</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="format-detection" content="telephone=no">
   <link href="../css/style.min.css" rel="stylesheet">
 </head>
 <body class="container">
@@ -10,130 +12,144 @@
   </header>
   <main class="page-main">
     <h1 class="visually-hidden">IMPROVE - Тестовое задание</h1>
-    <section>
-        <form class="form" action="#" method="post">
-          <fieldset>
-            <legend>
-              Личная информация
-            </legend>
-            <div class="wrapper-information">
-              <div class="wrapper-name">
-                <label for="name-field">Имя</label>
-                <input class="name" type="text" name="name" id="name-field" placeholder="Денис" autofocus required>
-              </div>
-              <div class="wrapper-surname">
-                <label for="surname-field">Фамилия</label>
-                <input class="surname" type="text" name="surname" id="surname-field" placeholder="Грищенко" required>
-              </div>
+    <section class="content">
+      <h2 class="visually-hidden">Формы</h2>
+      <form class="form" action="#" method="post">
+        <fieldset class="box box--small">
+          <legend>
+            Личная информация
+          </legend>
+          <div class="wrapper-information">
+            <div class="wrapper-name">
+              <label for="name-field">Имя</label>
+              <input class="input name" type="text" name="name" id="name-field" placeholder="Денис" autofocus required>
             </div>
-          </fieldset>
-          <fieldset>
-            <legend>
-              Очень важная информация
-            </legend>
-            <div class="wrapper-important-information">
-              <div class="wrapper-favorite-number">
-                <label>Любимая цифра
-                  <label>
-                    <input class="favorite-number" type="radio" name="favorite-number" value="0" required>0
-                  </label>
-                  <label>
-                    <input class="favorite-number" type="radio" name="favorite-number" value="1">1
-                  </label>
-                  <label>
-                    <input class="favorite-number" type="radio" name="favorite-number" value="2">2
-                  </label>
-                  <label>
-                    <input class="favorite-number" type="radio" name="favorite-number" value="3">3
-                  </label>
-                  <label>
-                    <input class="favorite-number" type="radio" name="favorite-number" value="4">4
-                  </label>
-                  <label>
-                    <input class="favorite-number" type="radio" name="favorite-number" value="5">5
-                  </label>
-                </label>
-              </div>
-              <div class="wrapper-favorite-music">
-                <label>Любимый музыкальный исполнитель
-                  <select class="favorite-music" name="favorite-music" required>
-                    <option value="rammstein">Rammstein</option>
-                    <option value="within-temptation">Within Temptation</option>
-                    <option value="imagine-dragons">Imagine Dragons</option>
-                    <option value="aria">Ария</option>
-                    <option value="kino">Кино</option>
-                  </select>
-                </label>
-              </div>
+            <div class="wrapper-surname">
+              <label for="surname-field">Фамилия</label>
+              <input class="input surname" type="text" name="surname" id="surname-field" placeholder="Грищенко" required>
             </div>
-            </fieldset>
-            <fieldset>
-              <legend>
-                Дополнительная информация
-              </legend>
-              <div class="wrapper-additional-information">
-                <div class="wrapper-favorite-color">
-                  <label>Любимый цвет
-                    <label>
-                      <input class="favorite-color" type="radio" name="favorite-color" value="red" required>Красный
-                    </label>
-                    <label>
-                      <input class="favorite-color" type="radio" name="favorite-color" value="pink">Розовый
-                    </label>
-                    <label>
-                      <input class="favorite-color" type="radio" name="favorite-color" value="orange">Оранжевый
-                    </label>
-                    <label>
-                      <input class="favorite-color" type="radio" name="favorite-color" value="yellow">Желтый
-                    </label>
-                    <label>
-                      <input class="favorite-color" type="radio" name="favorite-color" value="violet">Фиолетовый
-                    </label>
-                    <label>
-                      <input class="favorite-color" type="radio" name="favorite-color" value="purple">Пурпурный
-                    </label>
-                    <label>
-                      <input class="favorite-color" type="radio" name="favorite-color" value="brown">Коричневый
-                    </label>
-                    <label>
-                      <input class="favorite-color" type="radio" name="favorite-color" value="black">Черный
-                    </label>
-                    <label>
-                      <input class="favorite-color" type="radio" name="favorite-color" value="white">Белый
-                    </label>
-                    <label>
-                      <input class="favorite-color" type="radio" name="favorite-color" value="blue">Синий
-                    </label>
-                    <label>
-                      <input class="favorite-color" type="radio" name="favorite-color" value="olive">Оливковый
-                    </label>
-                  </label>
-                </div>
-              </div>
-            </fieldset>
-            <button class="btn submit" type="button" >Продолжить</button>
-          </form>
-      <div class="windows8">
-        <div class="wBall" id="wBall_1">
+          </div>
+        </fieldset>
+        <fieldset class="box box--small">
+          <legend>
+            Очень важная информация
+          </legend>
+          <div class="wrapper-important-information">
+            <div class="wrapper-favorite-number">
+              <p class="title">Любимая цифра</p>
+                <ul class="favorite-number-list">
+                  <li>
+                    <label for="0">0</label>
+                    <input class="favorite-number" id="0" type="radio" name="favorite-number" value="0">
+                  </li>
+                  <li>
+                    <label for="1">1</label>
+                    <input class="favorite-number" id="1" type="radio" name="favorite-number" value="1">
+                  </li>
+                  <li>
+                    <label for="2">2</label>
+                    <input class="favorite-number" id="2" type="radio" name="favorite-number" value="2">
+                  </li>
+                  <li>
+                    <label for="3">3</label>
+                    <input class="favorite-number" id="3" type="radio" name="favorite-number" value="3">
+                  </li>
+                  <li>
+                    <label for="4">4</label>
+                    <input class="favorite-number" id="4" type="radio" name="favorite-number" value="4">
+                  </li>
+                  <li>
+                    <label for="5">5</label>
+                    <input class="favorite-number" id="5" type="radio" name="favorite-number" value="5">
+                  </li>
+                </ul>
+            </div>
+            <div class="wrapper-favorite-music">
+              <label>Любимый музыкальный исполнитель
+                <select class="favorite-music" name="favorite-music">
+                  <option value="rammstein">Rammstein</option>
+                  <option value="within-temptation">Within Temptation</option>
+                  <option value="imagine-dragons">Imagine Dragons</option>
+                  <option value="aria">Ария</option>
+                  <option value="kino">Кино</option>
+                </select>
+              </label>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset class="box box--big">
+          <legend>
+            Дополнительная информация
+          </legend>
+          <div class="wrapper-additional-information">
+            <p  class="title">Любимый цвет</p>
+              <ul class="wrapper-favorite-color color-list">
+                <li class="color-item">
+                  <input class="favorite-color visually-hidden" id="red" type="radio" name="favorite-color" value="red">
+                  <label class="favorite-label red" for="red" aria-label="Красный"></label>
+                </li>
+                <li class="color-item">
+                  <input class="favorite-color visually-hidden" id="pink" type="radio" name="favorite-color" value="pink">
+                  <label class="favorite-label pink" for="pink" aria-label="Розовый"></label>
+                </li>
+                <li class="color-item">
+                  <input class="favorite-color visually-hidden" id="olive" type="radio" name="favorite-color" value="olive">
+                  <label class="favorite-label olive" for="olive" aria-label="Оливковый"></label>
+                </li>
+                <li class="color-item">
+                  <input class="favorite-color visually-hidden" id="blue" type="radio" name="favorite-color" value="blue">
+                  <label class="favorite-label blue" for="blue" aria-label="Синий"></label>
+                </li>
+                <li class="color-item">
+                  <input class="favorite-color visually-hidden" id="brown" type="radio" name="favorite-color" value="brown">
+                  <label class="favorite-label brown" for="brown" aria-label="Коричневый"></label>
+                </li>
+                <li class="color-item">
+                  <input class="favorite-color visually-hidden" id="purple" type="radio" name="favorite-color" value="purple">
+                  <label class="favorite-label purple" for="purple" aria-label="Пурпурный"></label>
+                </li>
+                <li class="color-item">
+                  <input class="favorite-color visually-hidden" id="violet" type="radio" name="favorite-color" value="violet">
+                  <label class="favorite-label violet" for="violet" aria-label="Фиолетовый"></label>
+                </li>
+                <li class="color-item">
+                  <input class="favorite-color visually-hidden" id="yellow" type="radio" name="favorite-color" value="yellow">
+                  <label class="favorite-label yellow" for="yellow" aria-label="Желтый"></label>
+                </li>
+                <li class="color-item">
+                  <input class="favorite-color visually-hidden" id="orange" type="radio" name="favorite-color" value="orange">
+                  <label class="favorite-label orange" for="orange" aria-label="Оранжевый"></label>
+                </li>
+              </ul>
+          </div>
+        </fieldset>
+        <button class="btn submit" type="button">Продолжить</button>
+      </form>
+      <div class="animation">
+        <div class="wBall wBall_1">
           <div class="wInnerBall"></div>
         </div>
-        <div class="wBall" id="wBall_2">
+        <div class="wBall wBall_2">
           <div class="wInnerBall"></div>
         </div>
-        <div class="wBall" id="wBall_3">
+        <div class="wBall wBall_3">
           <div class="wInnerBall"></div>
         </div>
-        <div class="wBall" id="wBall_4">
+        <div class="wBall wBall_4">
           <div class="wInnerBall"></div>
         </div>
-        <div class="wBall" id="wBall_5">
+        <div class="wBall wBall_5">
           <div class="wInnerBall"></div>
         </div>
       </div>
-              <h2>Благодарим за ответы!</h2>
-              <button class="btn close" type="button" value="Пожалуйста">Пожалуйста</button>
     </section>
-
+    <div class="pop-up">
+      <div class="pop-up__wrapper"></div>
+      <div class="pop-up__content">
+        <p class="pop-up__text">Проверьте ввод данных</p>
+        <button class="btn close" type="button">Ок</button>
+      </div>
+    </div>
   </main>
   <footer class="page-footer"></footer>
   <script src="../js/script.min.js"></script>

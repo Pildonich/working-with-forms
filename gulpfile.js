@@ -4,21 +4,17 @@ const rename = require('gulp-rename');
 const del = require('del');
 
 const posthtml = require('gulp-posthtml');
-const include = require('posthtml-include'); // для вставки повторяющихся кусков разметки
 
 const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps'); // пишет карту исходных файлов для devtools
 const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
 const mqpacker = require('css-mqpacker'); // для группировки медиа-выражений
-const objectFitImages = require('postcss-object-fit-images'); // полифил для свойства object-fit
 const cleanCSS = require('gulp-clean-css');
 
 const babel = require('gulp-babel'); // новый синтаксис js для старых браузеров
 const concat = require('gulp-concat');
 const jsmin = require('gulp-uglify');
-
-const imagemin = require('gulp-imagemin');
 
 const plumber = require('gulp-plumber');
 const server = require('browser-sync').create();
@@ -28,7 +24,7 @@ let postCssPlugins = [
   mqpacker({
     sort: true
   }),
-  objectFitImages(),
+
 ];
 
 gulp.task('html', function () {
@@ -37,7 +33,7 @@ gulp.task('html', function () {
     '!source/html/components/*.html'])
     .pipe(plumber())
     .pipe(posthtml([
-      include()
+
     ]))
     .pipe(gulp.dest('build/'))
     .pipe(server.stream());
@@ -73,19 +69,6 @@ gulp.task('script', function () {
     .pipe(server.stream());
 });
 
-gulp.task('images', function () {
-  return gulp.src([
-    'source/img/**/*.{png,jpg,svg,webp}',
-    '!source/img/sprite/*.svg'])
-    .pipe(imagemin([
-      imagemin.optipng({optimizationLevel: 3}),
-      imagemin.jpegtran({progressive: true})
-      // imagemin.svgo()                              //ломает лого
-    ]))
-    .pipe(rename({dirname: ''}))
-    .pipe(gulp.dest('build/img'))
-    .pipe(server.stream());
-});
 
 gulp.task('serve', function () {
   server.init({
@@ -99,8 +82,6 @@ gulp.task('serve', function () {
   gulp.watch('source/**/*.html', ['html']);
   gulp.watch('source/sass/**/*.{scss,sass}', ['style']);
   gulp.watch('source/js/modules/**/*.js', ['script']);
-  gulp.watch('source/img/**/*.{png,jpg,svg}', ['images']);
-  gulp.watch('source/img/sprite/*.svg', ['sprite']);
 });
 
 gulp.task('clean', function () {
@@ -112,7 +93,6 @@ gulp.task('build', function (done) {
       'clean',
       'style',
       'script',
-      'images',
       'html',
       done
   );

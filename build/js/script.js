@@ -1,8 +1,108 @@
 'use strict';
 
 (function () {
-  'use strict';
+  function animationToggle() {
+    document.querySelector('.animation').classList.toggle('animation--show');
+  }
 
+  function blockForm() {
+    animationToggle();
+    for (var i = 0; i < window.storage.data.length; i++) {
+      window.storage.data[i].disabled = true;
+    }
+  }
+
+  function unBlockForm() {
+    animationToggle();
+    for (var i = 0; i < window.storage.data.length; i++) {
+      window.storage.data[i].disabled = false;
+    }
+  }
+
+  window.animationLoader = {
+    start: blockForm,
+    end: unBlockForm
+  };
+})();
+'use strict';
+
+(function () {
+  var DELAY = 2000;
+
+  function checkFormPromise() {
+    return new Promise(function (resolve, reject) {
+      setTimeout(function () {
+        window.validation.check();
+        var errors = document.querySelector('.error');
+        !errors ? resolve() : reject('Заполните все поля правильно!');
+        window.animationLoader.end();
+      }, DELAY);
+    });
+  }
+
+  var submit = document.querySelector('.submit');
+
+  if (submit) {
+    submit.addEventListener('click', function () {
+      window.validation.hideError();
+      window.animationLoader.start();
+      checkFormPromise().then(window.service.openWindow).catch(window.service.popUpToggle);
+    });
+  }
+})();
+'use strict';
+
+(function () {
+  var ESC = 27;
+
+  function openWindow() {
+    window.open('thank-you.html');
+  }
+
+  function closeWindow() {
+    window.close();
+  }
+
+  function popUpToggle() {
+    popUp.classList.toggle('pop-up--show');
+  }
+
+  var popUpWrapper = document.querySelector('.pop-up__wrapper');
+  var popUp = document.querySelector('.pop-up');
+  var close = document.querySelector('.close');
+  var closeWindowBtn = document.querySelector('.close-window');
+
+  if (popUpWrapper) {
+    popUpWrapper.addEventListener('click', function () {
+      popUpToggle();
+    });
+  }
+
+  if (close) {
+    close.addEventListener('click', popUpToggle);
+  }
+
+  if (closeWindowBtn) {
+    closeWindowBtn.addEventListener('click', closeWindow);
+  }
+
+  window.addEventListener('keydown', function (evt) {
+    if (evt.keyCode === ESC) {
+      evt.preventDefault();
+      if (popUp.classList.contains('pop-up--show')) {
+        popUpToggle();
+      }
+    }
+  });
+
+  window.service = {
+    openWindow: openWindow,
+    popUpToggle: popUpToggle
+  };
+})();
+'use strict';
+
+(function () {
   function save(data) {
     localStorage.setItem('form', JSON.stringify(data));
   }
@@ -15,61 +115,14 @@
     save(data);
   }
 
-  function generateError(text) {
-    var error = document.createElement('div');
-    error.className = 'error';
-    error.style.color = 'red';
-    error.innerHTML = text;
-    return error;
-  }
-
-  function removeValidation() {
-    var errors = document.querySelectorAll('.error');
-
-    for (var i = 0; i < errors.length; i++) {
-      errors[i].remove();
-    }
-  }
-
-  function checkInputText(input, showError, errorText) {
-    var wrapperName = document.querySelector(showError);
-    var textValue = document.querySelector(input).value;
-    var regExp = /^[а-яА-ЯёЁ]{2,}$/;
-    if (!regExp.test(textValue)) {
-      var error = generateError(errorText);
-      wrapperName.parentElement.insertBefore(error, wrapperName);
-    }
-  }
-
-  function checkInputRadio(input, showError, errorText) {
-    var wrapperName = document.querySelector(showError);
-    var favoriteNumber = document.getElementsByName(input);
-    if (!Array.prototype.filter.call(favoriteNumber, function (elem) {
-      return elem.checked;
-    }).length) {
-      var error = generateError(errorText);
-      wrapperName.parentElement.insertBefore(error, wrapperName);
-    }
-  }
-
-  function checkMusic() {
-    var wrapperName = document.querySelector('.wrapper-favorite-music');
-    var favoriteMusic = document.querySelector('.favorite-music').value;
-    if (!favoriteMusic) {
-      var error = generateError('Выбирите любимого музыкального исполнителя');
-      wrapperName.parentElement.insertBefore(error, wrapperName);
-    }
-  }
-
   var data = localStorage.getItem('form');
+  var dataForm = document.querySelectorAll('[name]');
 
   if (data) {
     data = JSON.parse(data);
   } else {
     save(data = {});
   }
-
-  var dataForm = document.querySelectorAll('[name]');
 
   Array.prototype.forEach.call(dataForm, function (evt) {
     if (data[evt.name] === evt.value) {
@@ -84,44 +137,70 @@
     evt.addEventListener('change', onChange);
   });
 
+  window.storage = {
+    data: dataForm
+  };
+})();
+'use strict';
+
+(function () {
+  function generateError(text) {
+    var error = document.createElement('div');
+    error.className = 'error';
+    error.style.color = 'red';
+    error.innerHTML = text;
+    return error;
+  }
+
+  function showError(error, errorPlace) {
+    var place = document.querySelector(errorPlace);
+    place.parentElement.insertBefore(error, place);
+  }
+
+  function hideError() {
+    var errors = document.querySelectorAll('.error');
+    for (var i = 0; i < errors.length; i++) {
+      errors[i].remove();
+    }
+  }
+
+  function checkInputText(field, errorPlace, errorText) {
+    var textValue = document.querySelector(field).value;
+    var regExp = /^[а-яА-ЯёЁ]{2,}$/;
+    if (!regExp.test(textValue)) {
+      var error = generateError(errorText);
+      showError(error, errorPlace);
+    }
+  }
+
+  function checkInputRadio(field, errorPlace, errorText) {
+    var favoriteNumber = document.getElementsByName(field);
+    if (!Array.prototype.filter.call(favoriteNumber, function (elem) {
+      return elem.checked;
+    }).length) {
+      var error = generateError(errorText);
+      showError(error, errorPlace);
+    }
+  }
+
+  function checkSelect(field, errorPlace, errorText) {
+    var favoriteMusic = document.querySelector(field).value;
+    if (!favoriteMusic) {
+      var error = generateError(errorText);
+      showError(error, errorPlace);
+    }
+  }
+
   function checkForm() {
-    return !!(checkInputText('.name', '.wrapper-name', 'Имя должно состоять только из русских букв и иметь длинну более 2х символов') || checkInputText('.surname', '.wrapper-surname', 'Фамилия должна состоять только из русских букв и иметь длинну более 2х символов') || checkInputRadio('favorite-number', '.wrapper-favorite-number', 'Выбирите любимую цифру') || checkInputRadio('favorite-color', '.wrapper-favorite-color', 'Выбирите любимый цвет') || checkMusic());
+    checkInputText('.name', '.wrapper-name', 'Имя должно состоять только из русских букв и иметь длинну более 2х символов');
+    checkInputText('.surname', '.wrapper-surname', 'Фамилия должна состоять только из русских букв и иметь длинну более 2х символов');
+    checkInputRadio('favorite-number', '.wrapper-favorite-number', 'Выбирите любимую цифру');
+    checkInputRadio('favorite-color', '.wrapper-favorite-color', 'Выбирите любимый цвет');
+    checkSelect('.favorite-music', '.wrapper-favorite-music', 'Выбирите любимого музыкального исполнителя');
   }
 
-  function delay(t) {
-    return new Promise(function (resolve, reject) {
-      checkForm();
-      if (checkForm() === true) {
-        return setTimeout(resolve, t);
-      } else {
-        return setTimeout(reject, t);
-      }
-    });
-  }
-
-  function f() {
-    console.log('test1');
-  }
-
-  function blockForm() {
-    document.querySelector('.windows8').classList.add('windows8--show');
-    for (var i = 0; i < dataForm.length; i++) {
-      dataForm[i].disabled = true;
-    }
-  }
-
-  function unBlockForm() {
-    document.querySelector('.windows8').classList.remove('windows8--show');
-    for (var i = 0; i < dataForm.length; i++) {
-      dataForm[i].disabled = false;
-    }
-  }
-
-  var submit = document.querySelector('.submit');
-
-  submit.addEventListener('click', function () {
-    removeValidation();
-    blockForm();
-    delay(3000).then(f, unBlockForm);
-  });
+  window.validation = {
+    check: checkForm,
+    hideError: hideError
+  };
 })();
