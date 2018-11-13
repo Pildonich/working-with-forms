@@ -1,4 +1,5 @@
 (function () {
+  // Promise эмуляция отправки данных
   const DELAY = 2000;
 
   function checkFormPromise() {
@@ -12,7 +13,7 @@
     });
   }
 
-  let submit = document.querySelector('.submit');
+  let submit = document.querySelector('.form__btn');
 
   if (submit) {
     submit.addEventListener('click', function () {

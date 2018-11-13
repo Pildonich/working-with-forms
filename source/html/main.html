@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>IMPROVE - Тестовое задание</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="format-detection" content="telephone=no">
+  <link href="../css/style.min.css" rel="stylesheet">
+</head>
+<body class="container">
+  <header class="page-header">
+  </header>
+  <main class="page-main">
+    <h1 class="page-main__title visually-hidden">IMPROVE - Тестовое задание</h1>
+    <section class="quiz">
+      <h2 class="quiz__title visually-hidden">Формы</h2>
+      <form class="quiz__form form" action="#" method="post">
+        <fieldset class="form__box form__box--small">
+          <legend class="form__title">
+            Личная информация
+          </legend>
+            <div class="form__wrapper-name">
+              <label for="name-field">Имя</label>
+              <input class="form__name" type="text" name="name" id="name-field" placeholder="Денис" autofocus required>
+            </div>
+            <div class="form__wrapper-surname">
+              <label for="surname-field">Фамилия</label>
+              <input class="form__surname" type="text" name="surname" id="surname-field" placeholder="Грищенко" required>
+            </div>
+        </fieldset>
+        <fieldset class="form__box form__box--small">
+          <legend class="form__title">
+            Очень важная информация
+          </legend>
+            <div class="form__wrapper-favorite-number">
+              <p class="form__text">Любимая цифра</p>
+                <ul class="form__favorite-number-list">
+                  <li class="form__favorite-number-item">
+                    <label for="0">0</label>
+                    <input class="form__favorite-number" id="0" type="radio" name="favorite-number" value="0">
+                  </li>
+                  <li class="form__favorite-number-item">
+                    <label for="1">1</label>
+                    <input class="form__favorite-number" id="1" type="radio" name="favorite-number" value="1">
+                  </li>
+                  <li class="form__favorite-number-item">
+                    <label for="2">2</label>
+                    <input class="form__favorite-number" id="2" type="radio" name="favorite-number" value="2">
+                  </li>
+                  <li class="form__favorite-number-item">
+                    <label for="3">3</label>
+                    <input class="form__favorite-number" id="3" type="radio" name="favorite-number" value="3">
+                  </li>
+                  <li class="form__favorite-number-item">
+                    <label for="4">4</label>
+                    <input class="form__favorite-number" id="4" type="radio" name="favorite-number" value="4">
+                  </li>
+                  <li class="form__favorite-number-item">
+                    <label for="5">5</label>
+                    <input class="form__favorite-number" id="5" type="radio" name="favorite-number" value="5">
+                  </li>
+                </ul>
+            </div>
+            <div class="form__wrapper-favorite-music">
+              <label class="form__title">Любимый музыкальный исполнитель
+                <select class="form__favorite-music" name="favorite-music">
+                  <option value="rammstein">Rammstein</option>
+                  <option value="within-temptation">Within Temptation</option>
+                  <option value="imagine-dragons">Imagine Dragons</option>
+                  <option value="aria">Ария</option>
+                  <option value="kino">Кино</option>
+                </select>
+              </label>
+            </div>
+        </fieldset>
+        <fieldset class="form__box form__box--big">
+          <legend class="form__title">
+            Дополнительная информация
+          </legend>
+          <div class="form__wrapper-additional-information">
+            <p class="form__text">Любимый цвет</p>
+            <div class="form__wrapper-favorite-color">
+              <ul class="form__favorite-color-list">
+                <li class="form__favorite-color-item">
+                  <input class="form__favorite-color visually-hidden" id="red" type="radio" name="favorite-color" value="red">
+                  <label class="form__favorite-label form__favorite-label--red" for="red" aria-label="Красный"></label>
+                </li>
+                <li class="form__favorite-color-item">
+                  <input class="form__favorite-color visually-hidden" id="pink" type="radio" name="favorite-color" value="pink">
+                  <label class="form__favorite-label form__favorite-label--pink" for="pink" aria-label="Розовый"></label>
+                </li>
+                <li class="form__favorite-color-item">
+                  <input class="form__favorite-color visually-hidden" id="olive" type="radio" name="favorite-color" value="olive">
+                  <label class="form__favorite-label form__favorite-label--olive" for="olive" aria-label="Оливковый"></label>
+                </li>
+                <li class="form__favorite-color-item">
+                  <input class="form__favorite-color visually-hidden" id="blue" type="radio" name="favorite-color" value="blue">
+                  <label class="form__favorite-label form__favorite-label--blue" for="blue" aria-label="Синий"></label>
+                </li>
+                <li class="form__favorite-color-item">
+                  <input class="form__favorite-color visually-hidden" id="brown" type="radio" name="favorite-color" value="brown">
+                  <label class="form__favorite-label form__favorite-label--brown" for="brown" aria-label="Коричневый"></label>
+                </li>
+                <li class="form__favorite-color-item">
+                  <input class="form__favorite-color visually-hidden" id="purple" type="radio" name="favorite-color" value="purple">
+                  <label class="form__favorite-label form__favorite-label--purple" for="purple" aria-label="Пурпурный"></label>
+                </li>
+                <li class="form__favorite-color-item">
+                  <input class="form__favorite-color visually-hidden" id="violet" type="radio" name="favorite-color" value="violet">
+                  <label class="form__favorite-label form__favorite-label--violet" for="violet" aria-label="Фиолетовый"></label>
+                </li>
+                <li class="form__favorite-color-item">
+                  <input class="form__favorite-color visually-hidden" id="yellow" type="radio" name="favorite-color" value="yellow">
+                  <label class="form__favorite-label form__favorite-label--yellow" for="yellow" aria-label="Желтый"></label>
+                </li>
+                <li class="form__favorite-color-item">
+                  <input class="form__favorite-color visually-hidden" id="orange" type="radio" name="favorite-color" value="orange">
+                  <label class="form__favorite-label form__favorite-label--orange" for="orange" aria-label="Оранжевый"></label>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </fieldset>
+        <button class="form__btn btn" type="button">Продолжить</button>
+      </form>
+      <div class="animation">
+        <div class="wBall wBall_1">
+          <div class="wInnerBall"></div>
+        </div>
+        <div class="wBall wBall_2">
+          <div class="wInnerBall"></div>
+        </div>
+        <div class="wBall wBall_3">
+          <div class="wInnerBall"></div>
+        </div>
+        <div class="wBall wBall_4">
+          <div class="wInnerBall"></div>
+        </div>
+        <div class="wBall wBall_5">
+          <div class="wInnerBall"></div>
+        </div>
+      </div>
+    </section>
+    <div class="pop-up">
+      <div class="pop-up__wrapper"></div>
+      <div class="pop-up__content">
+        <p class="pop-up__text">Проверьте ввод данных</p>
+        <button class="pop-up__btn btn" type="button">Ок</button>
+      </div>
+    </div>
+  </main>
+  <footer class="page-footer"></footer>
+  <script src="../js/script.min.js"></script>
+</body>
+</html>

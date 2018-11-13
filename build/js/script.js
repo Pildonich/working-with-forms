@@ -1,6 +1,7 @@
 'use strict';
 
 (function () {
+  // Блокировка формы и анимация
   function animationToggle() {
     document.querySelector('.animation').classList.toggle('animation--show');
   }
@@ -27,6 +28,7 @@
 'use strict';
 
 (function () {
+  // Promise эмуляция отправки данных
   var DELAY = 2000;
 
   function checkFormPromise() {
@@ -40,7 +42,7 @@
     });
   }
 
-  var submit = document.querySelector('.submit');
+  var submit = document.querySelector('.form__btn');
 
   if (submit) {
     submit.addEventListener('click', function () {
@@ -53,6 +55,7 @@
 'use strict';
 
 (function () {
+  // Всплывающее окно, переход на новую страницу
   var ESC = 27;
 
   function openWindow() {
@@ -69,8 +72,8 @@
 
   var popUpWrapper = document.querySelector('.pop-up__wrapper');
   var popUp = document.querySelector('.pop-up');
-  var close = document.querySelector('.close');
-  var closeWindowBtn = document.querySelector('.close-window');
+  var close = document.querySelector('.pop-up__btn');
+  var closeWindowBtn = document.querySelector('.thanks__btn');
 
   if (popUpWrapper) {
     popUpWrapper.addEventListener('click', function () {
@@ -103,6 +106,7 @@
 'use strict';
 
 (function () {
+  // Работа с localStage
   function save(data) {
     localStorage.setItem('form', JSON.stringify(data));
   }
@@ -123,7 +127,7 @@
   } else {
     save(data = {});
   }
-
+  // Если в localStage есть данные, внести их в формы
   Array.prototype.forEach.call(dataForm, function (evt) {
     if (data[evt.name] === evt.value) {
       evt.checked = true;
@@ -144,6 +148,7 @@
 'use strict';
 
 (function () {
+  // Создание ошибок
   function generateError(text) {
     var error = document.createElement('div');
     error.className = 'error';
@@ -164,6 +169,7 @@
     }
   }
 
+  // Валидация форм
   function checkInputText(field, errorPlace, errorText) {
     var textValue = document.querySelector(field).value;
     var regExp = /^[а-яА-ЯёЁ]{2,}$/;
@@ -192,11 +198,11 @@
   }
 
   function checkForm() {
-    checkInputText('.name', '.wrapper-name', 'Имя должно состоять только из русских букв и иметь длинну более 2х символов');
-    checkInputText('.surname', '.wrapper-surname', 'Фамилия должна состоять только из русских букв и иметь длинну более 2х символов');
-    checkInputRadio('favorite-number', '.wrapper-favorite-number', 'Выбирите любимую цифру');
-    checkInputRadio('favorite-color', '.wrapper-favorite-color', 'Выбирите любимый цвет');
-    checkSelect('.favorite-music', '.wrapper-favorite-music', 'Выбирите любимого музыкального исполнителя');
+    checkInputText('.form__name', '.form__wrapper-name', 'Имя должно состоять только из русских букв и иметь длинну более 2х символов');
+    checkInputText('.form__surname', '.form__wrapper-surname', 'Фамилия должна состоять только из русских букв и иметь длинну более 2х символов');
+    checkInputRadio('favorite-number', '.form__wrapper-favorite-number', 'Выбирите любимую цифру');
+    checkInputRadio('favorite-color', '.form__wrapper-favorite-color', 'Выбирите любимый цвет');
+    checkSelect('.form__favorite-music', '.form__wrapper-favorite-music', 'Выбирите любимого музыкального исполнителя');
   }
 
   window.validation = {

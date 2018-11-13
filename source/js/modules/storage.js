@@ -1,4 +1,5 @@
 (function () {
+  // Работа с localStage
   function save(data) {
     localStorage.setItem('form', JSON.stringify(data));
   }
@@ -19,7 +20,7 @@
   } else {
     save(data = {});
   }
-
+  // Если в localStage есть данные, внести их в формы
   Array.prototype.forEach.call(dataForm, function (evt) {
     if (data[evt.name] === evt.value) {
       evt.checked = true;

@@ -1,0 +1,52 @@
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #fafafa;
+  width: 320px;
+}
+
+@media (min-width: 760px) {
+  .container {
+    width: 748px;
+  }
+}
+
+@media (min-width: 1150px) {
+  .container {
+    width: 1150px;
+  }
+}
+
+.page-header {
+  background-color: #3f51b5;
+  min-height: 40px;
+  margin-bottom: 40px;
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
+  border-radius: 10px;
+}
+
+.btn {
+  color: #ffffff;
+  width: 100px;
+  height: 40px;
+  border: 1px solid #3f51b5;
+  border-radius: 10px;
+  margin: 0;
+  padding: 0;
+  background-color: #3f51b5;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.btn:hover,
+.btn:focus {
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
+}
+
+.page-footer {
+  min-height: 40px;
+  margin-top: 40px;
+  background-color: #3f51b5;
+  border-radius: 10px;
+}
+

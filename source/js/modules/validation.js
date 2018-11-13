@@ -1,4 +1,5 @@
 (function () {
+  // Создание ошибок
   function generateError(text) {
     let error = document.createElement('div');
     error.className = 'error';
@@ -19,6 +20,7 @@
     }
   }
 
+  // Валидация форм
   function checkInputText(field, errorPlace, errorText) {
     let textValue = document.querySelector(field).value;
     let regExp = /^[а-яА-ЯёЁ]{2,}$/;
@@ -47,11 +49,11 @@
   }
 
   function checkForm() {
-    checkInputText('.name', '.wrapper-name', 'Имя должно состоять только из русских букв и иметь длинну более 2х символов');
-    checkInputText('.surname', '.wrapper-surname', 'Фамилия должна состоять только из русских букв и иметь длинну более 2х символов');
-    checkInputRadio('favorite-number', '.wrapper-favorite-number', 'Выбирите любимую цифру');
-    checkInputRadio('favorite-color', '.wrapper-favorite-color', 'Выбирите любимый цвет');
-    checkSelect('.favorite-music', '.wrapper-favorite-music', 'Выбирите любимого музыкального исполнителя');
+    checkInputText('.form__name', '.form__wrapper-name', 'Имя должно состоять только из русских букв и иметь длинну более 2х символов');
+    checkInputText('.form__surname', '.form__wrapper-surname', 'Фамилия должна состоять только из русских букв и иметь длинну более 2х символов');
+    checkInputRadio('favorite-number', '.form__wrapper-favorite-number', 'Выбирите любимую цифру');
+    checkInputRadio('favorite-color', '.form__wrapper-favorite-color', 'Выбирите любимый цвет');
+    checkSelect('.form__favorite-music', '.form__wrapper-favorite-music', 'Выбирите любимого музыкального исполнителя');
   }
 
   window.validation = {

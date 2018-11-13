@@ -1,4 +1,5 @@
 (function () {
+  // Всплывающее окно, переход на новую страницу
   const ESC = 27;
 
   function openWindow() {
@@ -15,8 +16,8 @@
 
   let popUpWrapper = document.querySelector('.pop-up__wrapper');
   let popUp = document.querySelector('.pop-up');
-  let close = document.querySelector('.close');
-  let closeWindowBtn = document.querySelector('.close-window');
+  let close = document.querySelector('.pop-up__btn');
+  let closeWindowBtn = document.querySelector('.thanks__btn');
 
   if (popUpWrapper) {
     popUpWrapper.addEventListener('click', function () {

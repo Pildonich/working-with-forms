@@ -1,4 +1,5 @@
 (function () {
+  // Блокировка формы и анимация
   function animationToggle() {
     document.querySelector('.animation').classList.toggle('animation--show');
   }
